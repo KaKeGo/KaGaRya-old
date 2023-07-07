@@ -33,7 +33,7 @@ const ProfileList = () => {
             <p>{profile.user.username}</p>
             <p>{profile.about}</p>
             <p>{profile.motto}</p>
-            <p>{profile.gender}</p>
+            <p>{profile.gender.name}</p>
             <p>{profile.online_status ? 'Online' : 'Offline'}</p>
           </li>
         ))}
