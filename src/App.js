@@ -1,16 +1,25 @@
 import Layout from "./layout/Layout";
+import { Routes, Route } from 'react-router-dom'
 
-import Patch from './routes/Patch'
-import PrivateRoute from "./routes/PrivateRoute";
 
+import Home from './content/Home/Home'
+import NotFound from './content/NotFound/NotFound'
+import ProfileList from "./content/ProfileList/ProfileList";
+import Login from "./content/Login/Login";
+import Register from "./content/Register/Register";
 
 
 function App() {
   return (
     <div className="App">
       <Layout>
-          <Patch />
-          <PrivateRoute />
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/login' element={<Login />}/>
+          <Route path='/register' element={<Register />}/>
+          <Route path="/profile/list" element={<ProfileList />}/>
+          <Route path="*" element={<NotFound />}/>
+        </Routes>
       </Layout>
     </div>
   );
