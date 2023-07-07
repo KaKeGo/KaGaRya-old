@@ -1,2 +1,3 @@
+Its my main page
 
-http://www.kagarya.com
+<a href="http://www.kagarya.com">Kagarya</a>
