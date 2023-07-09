@@ -8,6 +8,7 @@ import ProfileList from "./content/ProfileList/ProfileList";
 import Login from "./content/Login/Login";
 import Register from "./content/Register/Register";
 import TodoPlanList from "./content/Todo/TodoPlanList";
+import TodoPlanDetail from "./content/Todo/TodoPlanDetail";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/register' element={<Register />}/>
           <Route path="/profile/list" element={<ProfileList />}/>
           <Route path="/todo/plan/list" element={<TodoPlanList />}/>
+          <Route path="/todo/plan/:slug" element={<TodoPlanDetail />}/>
           <Route path="*" element={<NotFound />}/>
         </Routes>
       </Layout>

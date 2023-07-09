@@ -28,9 +28,8 @@ const ProfileList = () => {
       <ul>
         {profiles.map((profile) => (
           <li key={profile.id}>
-            <p>{profile.id}</p>
+            <b>{profile.user.username}</b>
             <img className='h-48 w-48' src={profile.avatar} alt={profile.user.username}/>
-            <p>{profile.user.username}</p>
             <p>{profile.about}</p>
             <p>{profile.motto}</p>
             <p>{profile.gender.name}</p>
