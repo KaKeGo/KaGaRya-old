@@ -20,6 +20,7 @@ const TodoPlanDetail = () => {
     if (loading) {
         return <div>Loading...</div>
     }
+    
     if (error) {
         return <div>Error: {error}</div>
     }
@@ -33,7 +34,7 @@ const TodoPlanDetail = () => {
 
             <h3>Todo:</h3>
             <ul>
-                {plan.todo.map((todo) => (
+                {plan.todo && plan.todo.map((todo) => (
                     <li key={todo.id}>
                         <h4>{todo.name}</h4>
                         <p>
@@ -42,7 +43,7 @@ const TodoPlanDetail = () => {
                         <h4>{todo.description}</h4>
                         <h4>Tasks:</h4>
                         <ul>
-                            {todo.task.map((task) => (
+                            {todo.task && todo.task.map((task) => (
                                 <li key={task.id}>
                                     <p>{task.name}</p>
                                     <p>{task.description}</p>
