@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom'
 
+import './TodoPlanDetail.css'
+
 import { fetchTodoPlanDetail } from '../../slices/Todo/TodoPlanDetail';
 
 
@@ -26,17 +28,51 @@ const TodoPlanDetail = () => {
     }
     
     return (
-        <div>
-            <h2>Plan name:
-                <b> {plan.name}</b>
-            </h2>
-            <p>Created by: {plan.get_username}</p>
+        <div className='container'>
+            <div className='plan-name'>
+                <h3>{plan.name}</h3>
+            </div>
+            <div className='plan-author'>
+                <p>Created by: {plan.get_username}</p>
+            </div>
 
-            <h3>Todo:</h3>
+            <div className='table-container'>
+                <table className='table-todo'>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {plan.todo && plan.todo.map((todo) => (
+                            <tr key={todo.id}>
+                                <td></td>
+                                <td className={todo.completed ? 'true' : 'false'}>{todo.id}</td>
+                                <td className={todo.completed ? 'true' : 'false'}>{todo.name}</td>
+                                <td className={todo.completed ? 'true' : 'false'}>{todo.description}</td>
+                                <td className={todo.completed ? 'true' : 'false'}>{todo.category.join(', ')}</td>
+                                <td></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                {plan.todo && plan.todo.map((todo) => (
+                    <h2 key={todo.id}>Todo: {todo.name}</h2>
+                ))}
+            </div>
             <ul>
                 {plan.todo && plan.todo.map((todo) => (
                     <li key={todo.id}>
                         <h4>{todo.name}</h4>
+                        <p>Completed: {todo.completed === 'true' ? 'Completed' : 'Not Completed'}</p>
                         <p>
                             Category: {todo.category.join(', ')}
                         </p>
@@ -47,7 +83,7 @@ const TodoPlanDetail = () => {
                                 <li key={task.id}>
                                     <p>{task.name}</p>
                                     <p>{task.description}</p>
-                                    <p>Completed: {task.completed ? 'Yes' : 'No'}</p>
+                                    <p>Completed: {plan.completed ? 'Completed' : 'Not Completed'}</p>
                                 </li>
                             ))}
                         </ul>

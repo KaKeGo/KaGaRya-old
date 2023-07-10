@@ -1,0 +1,117 @@
+
+.container {
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: 40px;
+}
+
+
+.plan-name {
+    margin-left: 50px;
+}
+.plan-name h3 {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 18px;
+}
+.plan-author {
+    margin-left: 50px;
+    font-size: 10px;
+}
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    background-color: lightgrey;
+    border-radius: 20px;
+    margin-top: 15px;
+}
+.table-todo {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 20px;
+}
+.table-todo td:not(:first-child):not(:last-child).true {
+    background-color: rgba(0, 128, 0, 0.2);
+}
+.table-container td:not(:first-child):not(:last-child).false {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+.table-todo th, td {
+    text-align: left;
+    position: relative;
+    padding: 0px 4px 0px 4px;
+}
+.table-todo th {
+    font-weight: bold;
+    font-size: 15px;
+}
+.table-todo th:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 60%;
+    width: 2px;
+    background-color: black;
+}
+.table-todo td:not(:first-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 40%;
+    width: 1px;
+    background-color: black;
+}
+.table-todo td:not(:first-child):not(:last-child)::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+}
+.table-todo th:first-child {
+    width: 5%;;
+}
+.table-todo th:nth-child(2) {
+    width: 3%;
+}
+.table-todo td:nth-child(2) {
+    font-weight: bold;
+}
+.table-todo th:nth-child(3) {
+    width: 20%;
+}
+.table-todo td:nth-child(3) {
+    font-weight: 500;
+}
+.table-todo th:nth-child(4) {
+    width: 57%;
+}
+.table-todo td:nth-child(4) {
+    font-size: 13px;
+    font-weight: 600;
+}
+.table-todo th:nth-child(5) {
+    width: 10%;
+}
+.table-todo td:nth-child(5) {
+    font-size: 13px;
+    font-weight: 600;
+}
+.table-todo th:last-child {
+    width: 5%;
+}
+
+
+@media (max-width: 768px) {
+      .table-container {
+        width: 75%;
+      }
+  }
