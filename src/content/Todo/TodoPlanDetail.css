@@ -5,9 +5,17 @@
     margin-top: 40px;
 }
 
+.expand-button {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
 
 .plan-name {
     margin-left: 50px;
+    text-align: center;
 }
 .plan-name h3 {
     text-decoration: underline;
@@ -104,6 +112,9 @@
 .table-todo td:nth-child(5) {
     font-size: 13px;
     font-weight: 600;
+}
+.table-todo th:nth-child(5) {
+    width: 2%;
 }
 .table-todo th:last-child {
     width: 5%;

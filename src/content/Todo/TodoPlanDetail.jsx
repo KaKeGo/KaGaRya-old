@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom'
 
 import './TodoPlanDetail.css'
 
 import { fetchTodoPlanDetail } from '../../slices/Todo/TodoPlanDetail';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAnglesDown, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 
 
 const TodoPlanDetail = () => {
@@ -14,6 +17,15 @@ const TodoPlanDetail = () => {
     const error = useSelector((state) => state.todoPlanDetail.error)
     const dispatch = useDispatch()
 
+    const [expandedTodo, setExpandedTodo] = useState([])
+
+    const handleExpandTasks = (todoId) => {
+        if (expandedTodo.includes(todoId)) {
+            setExpandedTodo(expandedTodo.filter((id) => id !== todoId))
+        } else {
+            setExpandedTodo([...expandedTodo, todoId])
+        }
+    }
 
     useEffect(() => {
         dispatch(fetchTodoPlanDetail(slug))
@@ -37,60 +49,69 @@ const TodoPlanDetail = () => {
             </div>
 
             <div className='table-container'>
-                <table className='table-todo'>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Category</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {plan.todo && plan.todo.map((todo) => (
-                            <tr key={todo.id}>
-                                <td></td>
-                                <td className={todo.completed ? 'true' : 'false'}>{todo.id}</td>
-                                <td className={todo.completed ? 'true' : 'false'}>{todo.name}</td>
-                                <td className={todo.completed ? 'true' : 'false'}>{todo.description}</td>
-                                <td className={todo.completed ? 'true' : 'false'}>{todo.category.join(', ')}</td>
-                                <td></td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+            <table className='table-todo'>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
 
-            <div>
-                {plan.todo && plan.todo.map((todo) => (
-                    <h2 key={todo.id}>Todo: {todo.name}</h2>
-                ))}
-            </div>
-            <ul>
-                {plan.todo && plan.todo.map((todo) => (
-                    <li key={todo.id}>
-                        <h4>{todo.name}</h4>
-                        <p>Completed: {todo.completed === 'true' ? 'Completed' : 'Not Completed'}</p>
-                        <p>
-                            Category: {todo.category.join(', ')}
-                        </p>
-                        <h4>{todo.description}</h4>
-                        <h4>Tasks:</h4>
-                        <ul>
-                            {todo.task && todo.task.map((task) => (
-                                <li key={task.id}>
-                                    <p>{task.name}</p>
-                                    <p>{task.description}</p>
-                                    <p>Completed: {plan.completed ? 'Completed' : 'Not Completed'}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    </li>
-                ))}
-            </ul>
 
+                <tbody>
+                {plan.todo && plan.todo.map((todo) => (
+                <>
+                <tr key={todo.id}>
+
+                    <td></td>
+                    <td className={todo.completed ? 'true' : 'false'}>{todo.id}</td>
+                    <td className={todo.completed ? 'true' : 'false'}>{todo.name}</td>
+                    <td className={todo.completed ? 'true' : 'false'}>{todo.description}</td>
+                    <td className={todo.completed ? 'true' : 'false'}>{todo.category.join(', ')}</td>
+                    <td>
+                        <button
+                            className="expand-button"
+                            onClick={() => handleExpandTasks(todo.id)}
+                        >
+                            {expandedTodo.includes(todo.id) ? (
+                                <FontAwesomeIcon icon={faAnglesDown} rotation={180}/>
+                            ) : (
+                                <FontAwesomeIcon icon={faAnglesDown} beatFade/>
+                            )
+                        }
+                        </button>
+                    </td>
+                    <td></td>
+
+                </tr>
+
+                {expandedTodo.includes(todo.id) && (
+                <>
+                {todo.task && todo.task.map((task) => (
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>{task.name}</td>
+                    <td>{task.description}</td>
+                    <td>{task.completed}</td>
+                    <td></td>
+                </tr>
+
+                ))}
+                </>
+                )}
+                </>
+                    
+                ))}
+                </tbody>
+            </table>
+            </div>
         </div>
     )
 }
