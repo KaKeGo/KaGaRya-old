@@ -19,7 +19,6 @@ const Navbar = () => {
 
             <div className='column column-1'>
                 <Link to='/login'>Login</Link>
-                <Link to='/login'>Register</Link>
             </div>
 
             <div className='column column-2'>
@@ -27,7 +26,7 @@ const Navbar = () => {
             </div>
 
             <div className='column column-3'>
-                <Link>Logout</Link>
+            <Link to='/login'>Register</Link>
             </div>
 
             <div className='more-options'>
