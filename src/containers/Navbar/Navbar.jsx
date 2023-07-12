@@ -41,9 +41,7 @@ const Navbar = () => {
                 
                 {isExpanded && (
                     <div className='additional-links'>
-                        <Link>Cos</Link>
-                        <Link>Inne cos</Link>
-                        <Link>Jeszcze inne</Link>
+                        <Link to='/todo/plan/list'>Todo plan list</Link>
                     </div>
                 )}
                 </div>
