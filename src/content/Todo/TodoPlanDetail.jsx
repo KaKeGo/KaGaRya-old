@@ -7,7 +7,7 @@ import './TodoPlanDetail.css'
 import { fetchTodoPlanDetail } from '../../slices/Todo/TodoPlanDetail';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAnglesDown, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { faAnglesDown, faSquareCheck } from '@fortawesome/free-solid-svg-icons'
 
 
 const TodoPlanDetail = () => {
@@ -92,16 +92,27 @@ const TodoPlanDetail = () => {
 
                 {expandedTodo.includes(todo.id) && (
                 <>
-                {todo.task && todo.task.map((task) => (
-
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td>{task.name}</td>
-                    <td>{task.description}</td>
-                    <td>{task.completed}</td>
-                    <td></td>
+                    <th></th>
+                    <th></th>
+                    <th style={{fontSize: '12px'}}>Name</th>
+                    <th style={{fontSize: '12px'}}>Description</th>
+                    <th style={{fontSize: '12px'}}>Completed</th>
+                    <th></th>
                 </tr>
+
+                {todo.task && todo.task.map((task) => (
+                
+                <>
+                    <tr key={task.id}>
+                        <td></td>
+                        <td></td>
+                        <td>{task.name}</td>
+                        <td>{task.description}</td>
+                        <td className={`icon ${todo.completed ? 'true' : 'false'}`}></td>
+                        <td></td>
+                    </tr>
+                </>
 
                 ))}
                 </>

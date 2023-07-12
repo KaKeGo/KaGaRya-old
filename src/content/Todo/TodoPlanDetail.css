@@ -1,8 +1,9 @@
 
 .container {
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    width: calc(100% - 140px);
 }
 
 .expand-button {
@@ -15,7 +16,6 @@
 
 .plan-name {
     margin-left: 50px;
-    text-align: center;
 }
 .plan-name h3 {
     text-decoration: underline;
@@ -23,7 +23,7 @@
     font-size: 18px;
 }
 .plan-author {
-    margin-left: 50px;
+    margin-left: 70px;
     font-size: 10px;
 }
 .table-container {
@@ -109,6 +109,7 @@
 .table-todo th:nth-child(5) {
     width: 10%;
 }
+
 .table-todo td:nth-child(5) {
     font-size: 13px;
     font-weight: 600;
@@ -119,10 +120,3 @@
 .table-todo th:last-child {
     width: 5%;
 }
-
-
-@media (max-width: 768px) {
-      .table-container {
-        width: 75%;
-      }
-  }
