@@ -5,8 +5,8 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './content/Home/Home'
 import NotFound from './content/NotFound/NotFound'
 import ProfileList from "./content/ProfileList/ProfileList";
-import Login from "./content/Login/Login";
-import Register from "./content/Register/Register";
+import Login from "./content/Account/Login/Login";
+import Register from "./content/Account/Register/Register";
 import TodoPlanList from "./content/Todo/TodoPlanList";
 import TodoPlanDetail from "./content/Todo/TodoPlanDetail";
 
