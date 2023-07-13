@@ -109,7 +109,7 @@ const TodoPlanDetail = () => {
                         <td></td>
                         <td>{task.name}</td>
                         <td>{task.description}</td>
-                        <td className={`icon ${todo.completed ? 'true' : 'false'}`}></td>
+                        <td className={`icon ${task.completed ? 'true' : 'false'}`}></td>
                         <td></td>
                     </tr>
                 </>

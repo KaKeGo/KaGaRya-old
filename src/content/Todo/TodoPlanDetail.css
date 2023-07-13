@@ -29,7 +29,7 @@
 .table-container {
     width: 100%;
     overflow-x: auto;
-    background-color: lightgrey;
+    background-color: #525151;
     border-radius: 20px;
     margin-top: 15px;
 }
@@ -41,10 +41,10 @@
     border-radius: 20px;
 }
 .table-todo td:not(:first-child):not(:last-child).true {
-    background-color: rgba(0, 128, 0, 0.2);
+    background-color: rgba(0, 128, 0, 0.5);
 }
 .table-container td:not(:first-child):not(:last-child).false {
-    background-color: rgba(255, 0, 0, 0.2);
+    background-color: rgba(255, 50, 69, 0.3)
 }
 .table-todo th, td {
     text-align: left;
@@ -119,4 +119,10 @@
 }
 .table-todo th:last-child {
     width: 5%;
+}
+
+@media (max-width: 580px) {
+    .container {
+        width: calc(125% - 140px);
+    }
 }

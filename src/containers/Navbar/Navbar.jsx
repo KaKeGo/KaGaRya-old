@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom'
 import './Navbar.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { 
+    faCaretDown, faRightToBracket, faUserPlus
+ } from '@fortawesome/free-solid-svg-icons'
 
 
 const Navbar = () => {
@@ -18,7 +20,7 @@ const Navbar = () => {
         <nav className='navbar'>
 
             <div className='column column-1'>
-                <Link to='/login'>Login</Link>
+                <Link to='/login'><FontAwesomeIcon icon={faRightToBracket}/> Login</Link>
             </div>
 
             <div className='column column-2'>
@@ -26,7 +28,7 @@ const Navbar = () => {
             </div>
 
             <div className='column column-3'>
-            <Link to='/login'>Register</Link>
+            <Link to='/register'><FontAwesomeIcon icon={faUserPlus} /> Register</Link>
             </div>
 
             <div className='more-options'>
