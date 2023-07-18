@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BASE_API_URL, DEV_API_URL} from '../../apiConfig'
 
 
-const fetchTodoPlanDetail = createAsyncThunk(
+export const fetchTodoPlanDetail = createAsyncThunk(
     'todoPlanDetail/createAsyncThunk', 
     async(slug) => {
         try {
@@ -13,7 +13,6 @@ const fetchTodoPlanDetail = createAsyncThunk(
                 )
             return response.data
         } catch (error) {
-            console.log(error.message)
             throw new Error('Cant load Plan Detail')
         }
     }
@@ -48,5 +47,4 @@ const todoPlanDetailSlice = createSlice({
 })
 
 
-export { fetchTodoPlanDetail }
 export default todoPlanDetailSlice.reducer

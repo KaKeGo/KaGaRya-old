@@ -1,38 +1,37 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
+import { Register } from '../../../slices/Accounts/register'
 import CustomCheckbox from '../../../containers/CheckBox/CheckBox'
 
 import './Register.css'
 
-const Register = () => {
+const  defaultInvitedCode = 'kochamdominike'
+
+const RegisterView = () => {
+  const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [inviteCode, setInviteCode] = useState('')
-  const [agreedToTerms, setAgreedToTerms] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  const [passwordMismatch, setPasswordMismatch] = useState(false);
+  const [inviteCodeInput, setInviteCodeInput] = useState(false);
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked)
-  }
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value)
-  }
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value)
-  }
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value)
-  }
-  const handleInviteCodeChange = (e) => {
-    setInviteCode(e.target.value)
-  }
-  const handleAgreedToTermsChange = (e) => {
-    setAgreedToTerms(e.target.checked);
-  };
+  const dispatch = useDispatch()
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    if (password !== confirmPassword) {
+      setPasswordMismatch(true)
+      return
+    }
+
+    if (inviteCodeInput === defaultInvitedCode) {
+      dispatch(Register({ 
+        username, email, password, confirm_password: confirmPassword
+      }))
+    }
   }
 
   return (
@@ -44,11 +43,20 @@ const Register = () => {
       <form className='register-form' onSubmit={handleSubmit}>
         <div className='email'>
           <input
+            type='text'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder='Username'
+            autoFocus={true}
+            required
+          />
+        </div>
+        <div className='email'>
+          <input
             type='email'
             value={email}
-            onChange={handleEmailChange}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder='Example@mail.com'
-            autoFocus={true}
             required
           />
         </div>
@@ -56,7 +64,7 @@ const Register = () => {
           <input
             type='password'
             value={password}
-            onChange={handlePasswordChange}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder='Password'
             required
           />
@@ -65,7 +73,7 @@ const Register = () => {
           <input
             type='password'
             value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             placeholder='Confirm Password'
             required
           />
@@ -73,22 +81,23 @@ const Register = () => {
         <div className='invite-code'>
           <input
             type='text'
-            value={inviteCode}
-            onChange={handleInviteCodeChange}
+            onChange={(e) => setInviteCodeInput(e.target.value)}
             placeholder='Invite Code'
+            required
           />
         </div>
-        <div className="checkbox-container">
+        {/* <div className="checkbox-container">
         <CustomCheckbox
           checked={agreedToTerms}
           onChange={handleAgreedToTermsChange}
         />
-        </div>
+        </div> */}
 
+        {passwordMismatch && <p>Password do not match</p>}
         <button className='register-button' type='submit'>Register</button>
       </form>
     </div>
   )
 }
 
-export default Register
+export default RegisterView

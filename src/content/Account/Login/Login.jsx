@@ -1,11 +1,20 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { Login } from '../../../slices/Accounts/account'
 
 import './Login.css'
 
 
-const Login = () => {
+const LoginView = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const dispatch = useDispatch()
+
+  const loading = useSelector((state) => state.login.loading)
+  const error = useSelector((state) => state.login.error)
+  const loggedIn = useSelector((state) => state.login.loggedIn)
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
@@ -14,8 +23,20 @@ const Login = () => {
     setPassword(e.target.value)
   }
 
+  if (loading) {
+    return <div>Loading...</div>
+  }
+  if (error) {
+    return <div>Error: {error}</div>
+  }
+  if (loggedIn) {
+    return <div>Welcome</div>
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    dispatch(Login({ email, password }))
   }
 
   return (
@@ -33,7 +54,7 @@ const Login = () => {
                 placeholder='Example@mail.com' autoFocus={true} required/>
             </div>
             <div className='password'>
-              <input type='p{assword' value={password} onChange={handlePasswordChange} 
+              <input type='password' value={password} onChange={handlePasswordChange} 
                 placeholder='Password' required/>
             </div>
             
@@ -46,4 +67,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default LoginView

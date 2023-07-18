@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 
-const fetchProfiles = createAsyncThunk('profileList/fetchProfiles', async () => {
+export const fetchProfiles = createAsyncThunk('profileList/fetchProfiles', async () => {
     try {
         const response = await axios.get('https://kagarya-api-b653e4a8ab75.herokuapp.com/accounts/profile/list/')
         return response.data
@@ -40,5 +40,4 @@ const profileListSlice = createSlice({
 })
 
 
-export { fetchProfiles }
 export default profileListSlice.reducer
