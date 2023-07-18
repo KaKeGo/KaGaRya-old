@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { Login } from '../../../slices/Accounts/account'
 
+import { Spiner } from '../../../containers/Loading/Spiner'
 import './Login.css'
 
 
@@ -24,7 +25,7 @@ const LoginView = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>
+    return <Spiner />
   }
   if (error) {
     return <div>Error: {error}</div>

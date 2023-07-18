@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 
 import { fetchTodoPlan } from '../../slices/Todo/todoPlanList'
 
+import { Spiner } from '../../containers/Loading/Spiner'
+
+
 const TodoPlanList = () => {
   const plans = useSelector((state) => state.todoPlan.plan)
   const loading = useSelector((state) => state.todoPlan.loading)
@@ -15,7 +18,7 @@ const TodoPlanList = () => {
   }, [dispatch])
 
   if (loading) {
-    return<div>Loading...</div>
+    return <Spiner />
   }
   if (error) {
     return <div>Error: {error}</div>
