@@ -12,7 +12,7 @@ export const Register = createAsyncThunk(
             const csrftoken = getCookie('csrftoken')
             try {
                 const response = await axios.post(
-                    `${DEV_API_URL}accounts/profile/create/`,
+                    `${BASE_API_URL}accounts/profile/create/`,
                     { username, email, password, confirm_password },
                     {
                         headers: {

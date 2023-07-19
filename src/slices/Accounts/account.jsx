@@ -13,7 +13,7 @@ export const Login = createAsyncThunk(
         const csrftoken = getCookie('csrftoken')
         try {
             const response = await axios.post(
-                `${DEV_API_URL}accounts/profile/login/`,
+                `${BASE_API_URL}accounts/profile/login/`,
                 { email, password },
                 {
                     headers: {
