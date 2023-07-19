@@ -25,12 +25,16 @@ const RegisterView = () => {
     if (password !== confirmPassword) {
       setPasswordMismatch(true)
       return
+    } else {
+      setPasswordMismatch(false)
     }
 
     if (inviteCodeInput === defaultInvitedCode) {
       dispatch(Register({ 
         username, email, password, confirm_password: confirmPassword
       }))
+    } else {
+      setInviteCodeInput(false)
     }
   }
 
@@ -93,6 +97,7 @@ const RegisterView = () => {
         />
         </div> */}
 
+        {!inviteCodeInput && <p>Invalid code</p>}
         {passwordMismatch && <p>Password do not match</p>}
         <button className='register-button' type='submit'>Register</button>
       </form>
