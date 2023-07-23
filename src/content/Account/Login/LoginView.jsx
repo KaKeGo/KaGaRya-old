@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { Login } from '../../../slices/Accounts/account'
 
@@ -17,6 +18,8 @@ const LoginView = () => {
   const error = useSelector((state) => state.login.error)
   const loggedIn = useSelector((state) => state.login.loggedIn)
 
+  const navigate = useNavigate()
+
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
   }
@@ -31,13 +34,17 @@ const LoginView = () => {
     return <div>Error: {error}</div>
   }
   if (loggedIn) {
-    return <div>Welcome</div>
+    navigate('/')
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    dispatch(Login({ email, password }))
+    dispatch(Login({ email, password })).then((response) => {
+      if (response.payload) {
+        localStorage.setItem('authenticated', 'true')
+      }
+    })
   }
 
   return (

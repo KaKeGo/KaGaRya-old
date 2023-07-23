@@ -5,6 +5,7 @@ import { Register } from '../../../slices/Accounts/register'
 import CustomCheckbox from '../../../containers/CheckBox/CheckBox'
 
 import './Register.css'
+import CSRFToken from '../../../CSRFToken'
 
 const  defaultInvitedCode = 'kochamdominike'
 
@@ -18,9 +19,10 @@ const RegisterView = () => {
 
   const dispatch = useDispatch()
 
-
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    console.log('CSRF token b', CSRFToken())
 
     if (password !== confirmPassword) {
       setPasswordMismatch(true)
@@ -45,6 +47,8 @@ const RegisterView = () => {
       </div>
 
       <form className='register-form' onSubmit={handleSubmit}>
+        <CSRFToken />
+
         <div className='email'>
           <input
             type='text'

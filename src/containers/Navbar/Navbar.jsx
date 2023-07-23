@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
     faCaretDown, faRightToBracket, faUserPlus
  } from '@fortawesome/free-solid-svg-icons'
+import LogoutView from '../../content/Account/Logout/Logout';
 
 
 const Navbar = () => {
@@ -24,11 +25,14 @@ const Navbar = () => {
             </div>
 
             <div className='column column-2'>
-                <h1>KaGaRya</h1>
+                <Link className='pageName' to='/'><h1>KaGaRya</h1></Link>
             </div>
 
             <div className='column column-3'>
-            <Link to='/register'><FontAwesomeIcon icon={faUserPlus} /> Register</Link>
+                <Link to='/register'><FontAwesomeIcon icon={faUserPlus} /> Register</Link>
+            </div>
+            <div className='column column-3'>
+                <LogoutView />
             </div>
 
             <div className='more-options'>

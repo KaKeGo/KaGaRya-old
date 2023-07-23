@@ -1,17 +1,25 @@
+import React, { useEffect } from 'react'
+import axios from 'axios'
 
-export function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+
+const CSRFToken = () => {
+    useEffect(() => {
+        const fetchCSRFToken = async () => {
+            try {
+                const response = await axios.get(
+                    'http://127.0.0.1:8000/accounts/csrftoken/',
+                )
+                const csrfTokenFromResponse = response.data.CSRFToken
+                console.log('CSRF Token pobrany:', csrfTokenFromResponse)
+                document.cookie = `csrftoken=${csrfTokenFromResponse}; path=/;`
+            } catch (error) {
+                console.log('Csrf not set ', error.message)
             }
         }
-    }
-    return cookieValue;
+        fetchCSRFToken()
+    }, [])
+
+    return null
 }
-const csrftoken = getCookie('csrftoken');
+
+export default CSRFToken

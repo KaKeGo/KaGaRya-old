@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
-import { getCookie } from '../../CSRFToken'
+import CSRFToken from "../../CSRFToken"
 
 import { BASE_API_URL, DEV_API_URL} from '../../apiConfig'
 
@@ -9,10 +9,11 @@ import { BASE_API_URL, DEV_API_URL} from '../../apiConfig'
 export const Register = createAsyncThunk(
         'register/Register',
         async ({ username, email, password, confirm_password }) => {
-            const csrftoken = getCookie('csrftoken')
+            const csrftoken = CSRFToken()
+            console.log(csrftoken)
             try {
                 const response = await axios.post(
-                    `${BASE_API_URL}accounts/profile/create/`,
+                    `${DEV_API_URL}accounts/profile/create/`,
                     { username, email, password, confirm_password },
                     {
                         headers: {
