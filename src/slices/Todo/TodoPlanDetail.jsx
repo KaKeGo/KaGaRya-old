@@ -6,10 +6,10 @@ import { BASE_API_URL, DEV_API_URL} from '../../apiConfig'
 
 export const fetchTodoPlanDetail = createAsyncThunk(
     'todoPlanDetail/createAsyncThunk', 
-    async(slug) => {
+    async (slug) => {
         try {
             const response = await axios.get(
-                    `${BASE_API_URL}todo/plan/${slug}/`
+                    `http://localhost:8000/todo/plan/${slug}/`
                 )
             return response.data
         } catch (error) {
@@ -27,7 +27,7 @@ const initialState = {
 
 const todoPlanDetailSlice = createSlice({
     name: 'todoPlanDetail',
-    initialState: initialState,
+    initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder

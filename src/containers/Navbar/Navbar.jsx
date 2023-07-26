@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import './Navbar.css'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 import { 
-    faCaretDown, faRightToBracket, faUserPlus
+    faCaretDown, faRightToBracket, faUserPlus, faUser, faRightFromBracket
  } from '@fortawesome/free-solid-svg-icons'
-import LogoutView from '../../content/Account/Logout/Logout';
+
+ import LogoutView from '../../content/Account/Logout/Logout'
 
 
 const Navbar = () => {
     const [isExpanded, setIsExpanded] = useState(false)
+    const isAuthenticated = useSelector((state) => state.authCheck.isAuthenticated)
 
     const handleToggleExpansion = () => {
         setIsExpanded(!isExpanded)
@@ -21,7 +24,12 @@ const Navbar = () => {
         <nav className='navbar'>
 
             <div className='column column-1'>
-                <Link to='/login'><FontAwesomeIcon icon={faRightToBracket}/> Login</Link>
+                {isAuthenticated ? (
+                    <Link to='/profile'><FontAwesomeIcon icon={faUser} /> Profile</Link>
+                ) : (
+                    <Link to='/login'><FontAwesomeIcon icon={faRightToBracket}/> Login</Link>
+                )}
+                
             </div>
 
             <div className='column column-2'>
@@ -29,10 +37,11 @@ const Navbar = () => {
             </div>
 
             <div className='column column-3'>
-                <Link to='/register'><FontAwesomeIcon icon={faUserPlus} /> Register</Link>
-            </div>
-            <div className='column column-3'>
-                <LogoutView />
+                {isAuthenticated ? (
+                    <Link><FontAwesomeIcon icon={faRightFromBracket} /><LogoutView> Logout</LogoutView></Link>
+                ) : (
+                    <Link to='/register'><FontAwesomeIcon icon={faUserPlus} /> Sign Up</Link>
+                )}
             </div>
 
             <div className='more-options'>

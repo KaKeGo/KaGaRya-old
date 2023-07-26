@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
+import Cookie from 'js-cookie';
 
 import { BASE_API_URL, DEV_API_URL} from '../../apiConfig'
 
@@ -8,10 +9,19 @@ export const Login = createAsyncThunk(
         'login/Login', 
         async ({ email, password}) => 
         {
+        const csrftoken = Cookie.get('csrftoken')
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            }
+        }
         try {
             const response = await axios.post(
-                `${DEV_API_URL}accounts/profile/login/`,
+                `http://localhost:8000/accounts/profile/login/`,
                 { email, password },
+                config,
             )
             return response.data
         } catch (error) {
@@ -22,7 +32,7 @@ export const Login = createAsyncThunk(
 const initialState = {
     loading: false,
     error: null,
-    loggedIn: false,
+    isAuthenticated : false,
 }
 
 const loginSlice = createSlice({
@@ -37,7 +47,7 @@ const loginSlice = createSlice({
             })
             .addCase(Login.fulfilled, (state, action) => {
                 state.loading = false
-                state.loggedIn = true
+                state.isAuthenticated = true
             })
             .addCase(Login.rejected, (state, action) => {
                 state.loading = false

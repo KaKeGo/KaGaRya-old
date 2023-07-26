@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useContext, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { Register } from '../../../slices/Accounts/register'
-import CustomCheckbox from '../../../containers/CheckBox/CheckBox'
 
 import './Register.css'
 import CSRFToken from '../../../CSRFToken'
 
-const  defaultInvitedCode = 'kochamdominike'
+const  defaultInvitedCode = 'beton'
+
 
 const RegisterView = () => {
   const [username, setUsername] = useState('')
@@ -21,8 +21,6 @@ const RegisterView = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    console.log('CSRF token b', CSRFToken())
 
     if (password !== confirmPassword) {
       setPasswordMismatch(true)

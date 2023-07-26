@@ -1,26 +1,28 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import axios from "axios"
-
-import CSRFToken from "../../CSRFToken"
+import axios from '../../axiosConfig'
+import Cookie from 'js-cookie';
 
 import { BASE_API_URL, DEV_API_URL} from '../../apiConfig'
 
 
 export const Register = createAsyncThunk(
         'register/Register',
-        async ({ username, email, password, confirm_password }) => {
-            const csrftoken = CSRFToken()
-            console.log(csrftoken)
+        async ({ 
+                username, email, password, confirm_password
+            }) => {
+            const csrftoken = Cookie.get('csrftoken')
+            const config = {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                }
+            }
             try {
                 const response = await axios.post(
                     `${DEV_API_URL}accounts/profile/create/`,
                     { username, email, password, confirm_password },
-                    {
-                        headers: {
-                            'X-CSRFToken': csrftoken,
-                            'Content-Type': 'application/json',
-                        }
-                    }
+                    config,
                 )
                 return response.data
             } catch (error) {

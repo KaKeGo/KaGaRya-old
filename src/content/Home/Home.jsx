@@ -1,23 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 
 
 
 const Home = () => {
-  const loggedIn = useSelector((state) => state.auth.loggedIn)
+  const isAuthenticated = useSelector((state) => state.authCheck.isAuthenticated)
+  const userData = useSelector((state) => state.authCheck.userData)
 
   return (
     <div>
       <h3>Home</h3>
-      <div>
-        {loggedIn ?
-          <p>Welcome,!</p>
-          :
-          <p>Anonymouse</p>
-        }
-      </div>
+      {isAuthenticated ? (
+        <p>Welcome, {userData?.username || 'Anonymous'}!</p>
+      ) : (
+        <p>Welcome, Anonymous!</p>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default Home

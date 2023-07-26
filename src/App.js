@@ -8,6 +8,7 @@ import LoginView from "./content/Account/Login/LoginView";
 import Register from "./content/Account/Register/Register";
 import TodoPlanList from "./content/Todo/TodoPlanList";
 import TodoPlanDetail from "./content/Todo/TodoPlanDetail";
+import UserProfileView from "./content/Account/UserProfile/UserProfile";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path='/login' element={<LoginView />}/>
             <Route path='/register' element={<Register />}/>
             <Route path="/profile/list" element={<ProfileList />}/>
+            <Route path="/profile/:slug" element={<UserProfileView />}/>
             <Route path="/todo/plan/list" element={<TodoPlanList />}/>
             <Route path="/todo/plan/:slug" element={<TodoPlanDetail />}/>
             <Route path="*" element={<NotFound />}/>

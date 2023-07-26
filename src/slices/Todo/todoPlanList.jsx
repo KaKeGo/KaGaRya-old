@@ -8,7 +8,7 @@ const fetchTodoPlan = createAsyncThunk('todoPlan/fetchTodoPlan',
     async () => {
         try {
             const response = await axios.get(
-                    `${BASE_API_URL}todo/plan/`
+                    `http://localhost:8000/todo/plan/`
                 )
             return response.data
         } catch (error) {

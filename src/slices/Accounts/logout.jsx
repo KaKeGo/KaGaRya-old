@@ -12,12 +12,7 @@ export const Logout = createAsyncThunk(
             const response = await axios.post(
                 `${DEV_API_URL}accounts/profile/logout/`,
                 {},
-                {
-                    // headers: {
-                    //     'X-CSRFToken': csrftoken,
-                    //     'Content-Type': 'application/json',
-                    // }
-                }
+
             )
             return response.data
         } catch (error) {
@@ -55,5 +50,4 @@ const logoutSlice = createSlice({
 })
 
 
-export const { setLoggedOut } = logoutSlice.actions
 export default logoutSlice.reducer

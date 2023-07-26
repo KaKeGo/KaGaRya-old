@@ -1,20 +1,22 @@
 import React, { useEffect }  from 'react'
-import { useDispatch } from 'react-redux'
-
-import { authStatus } from '../../../slices/Accounts/auth'
-// import { getCookie } from '../../../CSRFToken'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUserAuthCheck } from '../../../slices/Accounts/authCheckSlice'
 
 
-const Auth = ({ children }) => {
+
+const Auth = () => {
     const dispatch = useDispatch()
-    // const csrftoken = getCookie('csrftoken')
-    // console.log(csrftoken)
+
 
     useEffect(() => {
-        dispatch(authStatus())
+        dispatch(fetchUserAuthCheck())
     }, [dispatch])
 
-    return <>{children}</>
+    useEffect(() => {
+
+    }, [dispatch])
+
+    return <></>
 }
 
 export default Auth
