@@ -40,7 +40,7 @@ const Navbar = () => {
                 {isAuthenticated ? (
                     <Link><FontAwesomeIcon icon={faRightFromBracket} /><LogoutView> Logout</LogoutView></Link>
                 ) : (
-                    <Link to='/register'><FontAwesomeIcon icon={faUserPlus} /> Sign Up</Link>
+                    <Link to='/register'><FontAwesomeIcon icon={faUserPlus} /> SignUp</Link>
                 )}
             </div>
 
@@ -53,13 +53,16 @@ const Navbar = () => {
                             rotation={isExpanded ? 180: 0}
                         />
                 </button>
-                
                 {isExpanded && (
-                    <div className='additional-links'>
+                <div className='additional-links'>
+                    {isAuthenticated ? (
                         <Link to='/todo/plan/list'>Todo plan list</Link>
-                    </div>
-                )}
+                    ) : (
+                        <span className='text-xs font-normal'>login to see more...</span>
+                    )}
                 </div>
+                )}
+            </div>
 
         </nav>
     )

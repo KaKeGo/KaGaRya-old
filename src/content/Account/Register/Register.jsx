@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Register } from '../../../slices/Accounts/register'
+import { Register } from '../../../slices/Accounts/registerSlice'
 
 import './Register.css'
 import CSRFToken from '../../../CSRFToken'

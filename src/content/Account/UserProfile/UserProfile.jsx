@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { useParams }from 'react-router-dom'
 
-import { fetchUserProfile } from '../../../slices/Accounts/profileDetailSlice'
+import { fetchUserProfile } from '../../../slices/Accounts/Profile/profileDetailSlice'
 
 import { Spiner } from '../../../containers/Loading/Spiner'
 

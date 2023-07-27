@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import CSRFToken from '../../../CSRFToken'
-import { Login } from '../../../slices/Accounts/account'
+import { Login } from '../../../slices/Accounts/loginSlice'
 
 import { Spiner } from '../../../containers/Loading/Spiner'
 import './Login.css'

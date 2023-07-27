@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { fetchProfiles } from '../../slices/Accounts/profileList'
+import { fetchProfiles } from '../../slices/Accounts/Profile/profileList'
 
 
 

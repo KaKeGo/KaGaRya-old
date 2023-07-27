@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { Logout } from '../../../slices/Accounts/logout'
+import { Logout } from '../../../slices/Accounts/logoutSlice'
 import { Spiner } from '../../../containers/Loading/Spiner'
 
 const LogoutView = () => {

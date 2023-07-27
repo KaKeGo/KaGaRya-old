@@ -10,6 +10,7 @@ export const Login = createAsyncThunk(
         async ({ email, password}) => 
         {
         const csrftoken = Cookie.get('csrftoken')
+
         const config = {
             headers: {
                 'Accept': 'application/json',
@@ -17,6 +18,7 @@ export const Login = createAsyncThunk(
                 'X-CSRFToken': csrftoken
             }
         }
+
         try {
             const response = await axios.post(
                 `http://localhost:8000/accounts/profile/login/`,
