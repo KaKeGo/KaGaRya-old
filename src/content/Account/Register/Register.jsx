@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useContext, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { Register } from '../../../slices/Accounts/register'
-import CustomCheckbox from '../../../containers/CheckBox/CheckBox'
+import { Register } from '../../../slices/Accounts/registerSlice'
 
 import './Register.css'
+import CSRFToken from '../../../CSRFToken'
 
-const  defaultInvitedCode = 'kochamdominike'
+const  defaultInvitedCode = 'beton'
+
 
 const RegisterView = () => {
   const [username, setUsername] = useState('')
@@ -17,7 +18,6 @@ const RegisterView = () => {
   const [inviteCodeInput, setInviteCodeInput] = useState(false);
 
   const dispatch = useDispatch()
-
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -45,6 +45,8 @@ const RegisterView = () => {
       </div>
 
       <form className='register-form' onSubmit={handleSubmit}>
+        <CSRFToken />
+
         <div className='email'>
           <input
             type='text'

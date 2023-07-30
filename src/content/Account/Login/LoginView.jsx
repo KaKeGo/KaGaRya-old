@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import { Login } from '../../../slices/Accounts/account'
+import CSRFToken from '../../../CSRFToken'
+import { Login } from '../../../slices/Accounts/loginSlice'
 
 import { Spiner } from '../../../containers/Loading/Spiner'
 import './Login.css'
+import { fetchUserAuthCheck } from '../../../slices/Accounts/authCheckSlice'
 
 
 const LoginView = () => {
@@ -15,7 +18,8 @@ const LoginView = () => {
 
   const loading = useSelector((state) => state.login.loading)
   const error = useSelector((state) => state.login.error)
-  const loggedIn = useSelector((state) => state.login.loggedIn)
+
+  const navigate = useNavigate()
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
@@ -24,20 +28,27 @@ const LoginView = () => {
     setPassword(e.target.value)
   }
 
+  useEffect(() => {
+    dispatch(fetchUserAuthCheck())
+  }, [dispatch])
+
   if (loading) {
     return <Spiner />
   }
   if (error) {
     return <div>Error: {error}</div>
   }
-  if (loggedIn) {
-    return <div>Welcome</div>
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    dispatch(Login({ email, password }))
+    dispatch(Login({ email, password })).then((response) => {
+      if (response.payload) {
+        navigate('/')
+        window.location.reload()
+      }
+    })
+    dispatch(fetchUserAuthCheck())
   }
 
   return (
@@ -49,6 +60,7 @@ const LoginView = () => {
           </div>
           
           <form className='login-form' onSubmit={handleSubmit}>
+            <CSRFToken />
 
             <div className='email'>
               <input type='email' value={email} onChange={handleEmailChange} 

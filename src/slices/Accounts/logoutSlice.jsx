@@ -4,41 +4,45 @@ import axios from 'axios'
 import { BASE_API_URL, DEV_API_URL} from '../../apiConfig'
 
 
-const fetchTodoPlan = createAsyncThunk('todoPlan/fetchTodoPlan', 
+export const Logout = createAsyncThunk(
+    'logout/Logout',
     async () => {
+
         try {
-            const response = await axios.get(
-                    `http://localhost:8000/todo/plan/`
-                )
+            const response = await axios.post(
+                `${DEV_API_URL}accounts/profile/logout/`,
+                {},
+
+            )
             return response.data
         } catch (error) {
-            throw new Error('Cant load Todo Plan' + error.message) 
+            throw new Error('Failed to logout: ' + error.message)
         }
     }
 )
 
 
 const initialState = {
-    plan: [],
+    loggedIn: false,
     loading: false,
     error: null,
 }
 
-const todoPlanSlice = createSlice({
-    name: 'todoPlan',
+const logoutSlice = createSlice({
+    name: 'logout',
     initialState: initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchTodoPlan.pending, (state) => {
+            .addCase(Logout.pending, (state) => {
                 state.loading = true
                 state.error = null
             })
-            .addCase(fetchTodoPlan.fulfilled, (state, action) => {
+            .addCase(Logout.fulfilled, (state, action) => {
                 state.loading = false
-                state.plan = action.payload
+                state.loggedIn = false
             })
-            .addCase(fetchTodoPlan.rejected, (state, action) => {
+            .addCase(Logout.rejected, (state, action) => {
                 state.loading = false
                 state.error = action.error.message
             })
@@ -46,5 +50,4 @@ const todoPlanSlice = createSlice({
 })
 
 
-export { fetchTodoPlan }
-export default todoPlanSlice.reducer
+export default logoutSlice.reducer

@@ -1,17 +1,30 @@
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import Cookie from 'js-cookie'
 
-export function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+
+const CSRFToken = () => {
+    const [csrftoken, setcsrftoken] = useState('');
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://127.0.0.1:8000/accounts/csrftoken/`);
+                const csrfTokenFromResponse = response.data.CSRFToken
+                setcsrftoken(csrfTokenFromResponse)
+                Cookie.set('csrftoken', csrfTokenFromResponse)
+            } catch (error) {
+                console.log('Failed to fetch CSRF token: ', error.message)
             }
-        }
-    }
-    return cookieValue;
-}
-const csrftoken = getCookie('csrftoken');
+        };
+
+        fetchData();
+    }, []);
+
+    
+    return (
+        <input type='hidden' name='csrfmiddlewaretoken' value={csrftoken} />
+    )
+};
+
+export default CSRFToken;

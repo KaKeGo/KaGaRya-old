@@ -54,7 +54,6 @@
     position: absolute;
     font-size: 50px;
     color: white;
-    -webkit-text-stroke: 1px black;
     font-weight: 800;
     font-size: 55px;
     top: -24px;
@@ -67,6 +66,7 @@
 }
 .column-2 a {
     flex-basis: 20%;
+    -webkit-text-stroke: 1px black;
 }
 .column-3 {
     flex-basis: 40%;
