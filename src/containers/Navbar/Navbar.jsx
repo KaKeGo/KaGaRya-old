@@ -15,6 +15,7 @@ import {
 const Navbar = () => {
     const [isExpanded, setIsExpanded] = useState(false)
     const isAuthenticated = useSelector((state) => state.authCheck.isAuthenticated)
+    const slug = useSelector((state) => state.authCheck.userData?.slug)
 
     const handleToggleExpansion = () => {
         setIsExpanded(!isExpanded)
@@ -25,7 +26,7 @@ const Navbar = () => {
 
             <div className='column column-1'>
                 {isAuthenticated ? (
-                    <Link to='/profile'><FontAwesomeIcon icon={faUser} /> Profile</Link>
+                    <Link to={`/profile/${slug}`}><FontAwesomeIcon icon={faUser} /> Profile</Link>
                 ) : (
                     <Link to='/login'><FontAwesomeIcon icon={faRightToBracket}/> Login</Link>
                 )}
