@@ -22,6 +22,7 @@ const LogoutView = () => {
         try {
             dispatch(Logout())
             navigate('/')
+            window.location.reload()
         } catch (error) {
             console.log(error)
         }

@@ -17,12 +17,16 @@ function App() {
         <Layout>
           <Routes>
             <Route path='/' element={<Home />}/>
+
             <Route path='/login' element={<LoginView />}/>
             <Route path='/register' element={<Register />}/>
+
             <Route path="/profile/list" element={<ProfileList />}/>
             <Route path="/profile/:slug" element={<UserProfileView />}/>
+
             <Route path="/todo/plan/list" element={<TodoPlanList />}/>
             <Route path="/todo/plan/:slug" element={<TodoPlanDetail />}/>
+            
             <Route path="*" element={<NotFound />}/>
           </Routes>
         </Layout>

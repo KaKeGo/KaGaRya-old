@@ -45,6 +45,7 @@ const LoginView = () => {
     dispatch(Login({ email, password })).then((response) => {
       if (response.payload) {
         navigate('/')
+        window.location.reload()
       }
     })
     dispatch(fetchUserAuthCheck())
