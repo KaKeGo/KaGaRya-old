@@ -1,10 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+import { KAGARYA_API, DEV_API_URL} from '../../../apiConfig'
+
+
 
 export const fetchProfiles = createAsyncThunk('profileList/fetchProfiles', async () => {
     try {
-        const response = await axios.get('http://localhost:8000/accounts/profile/list/')
+        const response = await axios.get(`${KAGARYA_API}accounts/profile/list/`)
         return response.data
     } catch (error) {
         throw new Error('Cant load profiles')

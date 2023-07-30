@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import Cookies from 'js-cookie';
 
-import { BASE_API_URL, DEV_API_URL} from '../../apiConfig'
+import { KAGARYA_API, DEV_API_URL} from '../../apiConfig'
 
 
 export const fetchUserAuthCheck = createAsyncThunk(
@@ -10,7 +10,7 @@ export const fetchUserAuthCheck = createAsyncThunk(
     async () => {
         try {
             const response = await axios.get(
-                `http://localhost:8000/accounts/authcheck/`,
+                `${KAGARYA_API}accounts/authcheck/`,
             )
             return response.data
         } catch (error) {

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { BASE_API_URL, DEV_API_URL} from '../../apiConfig'
+import { KAGARYA_API, DEV_API_URL} from '../../apiConfig'
 
 
 export const fetchTodoPlanDetail = createAsyncThunk(
@@ -9,7 +9,7 @@ export const fetchTodoPlanDetail = createAsyncThunk(
     async (slug) => {
         try {
             const response = await axios.get(
-                    `http://localhost:8000/todo/plan/${slug}/`
+                    `${KAGARYA_API}todo/plan/${slug}/`
                 )
             return response.data
         } catch (error) {

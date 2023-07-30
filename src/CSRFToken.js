@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Cookie from 'js-cookie'
 
+import { KAGARYA_API, DEV_API_URL} from './apiConfig'
+
 
 const CSRFToken = () => {
     const [csrftoken, setcsrftoken] = useState('');
@@ -9,7 +11,7 @@ const CSRFToken = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/accounts/csrftoken/`);
+                const response = await axios.get(`${KAGARYA_API}accounts/csrftoken/`);
                 const csrfTokenFromResponse = response.data.CSRFToken
                 setcsrftoken(csrfTokenFromResponse)
                 Cookie.set('csrftoken', csrfTokenFromResponse)

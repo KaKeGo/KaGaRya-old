@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 import Cookie from 'js-cookie';
 
-import { BASE_API_URL, DEV_API_URL} from '../../apiConfig'
+import { KAGARYA_API, DEV_API_URL} from '../../apiConfig'
 
 
 export const Login = createAsyncThunk(
@@ -21,7 +21,7 @@ export const Login = createAsyncThunk(
 
         try {
             const response = await axios.post(
-                `http://localhost:8000/accounts/profile/login/`,
+                `${KAGARYA_API}accounts/profile/login/`,
                 { email, password },
                 config,
             )

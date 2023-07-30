@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { BASE_API_URL, DEV_API_URL} from '../../apiConfig'
+import { KAGARYA_API, DEV_API_URL} from '../../apiConfig'
 
 
 export const Logout = createAsyncThunk(
@@ -10,7 +10,7 @@ export const Logout = createAsyncThunk(
 
         try {
             const response = await axios.post(
-                `${DEV_API_URL}accounts/profile/logout/`,
+                `${KAGARYA_API}accounts/profile/logout/`,
                 {},
 
             )

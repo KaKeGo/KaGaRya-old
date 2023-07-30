@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+import { KAGARYA_API, DEV_API_URL} from '../../../apiConfig'
 
 
 export const fetchUserProfile = createAsyncThunk(
@@ -8,7 +9,7 @@ export const fetchUserProfile = createAsyncThunk(
     async (slug) => {
         try {
             const response = await axios.get(
-                `http://localhost:8000/accounts/profile/${slug}/`
+                `${KAGARYA_API}accounts/profile/${slug}/`
             )
             return response.data
         } catch (error) {
