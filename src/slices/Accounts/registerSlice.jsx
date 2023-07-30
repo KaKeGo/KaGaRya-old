@@ -16,7 +16,8 @@ export const Register = createAsyncThunk(
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'X-CSRFToken': csrftoken
-                }
+                },
+                withCredentials: true,
             }
             try {
                 const response = await axios.post(

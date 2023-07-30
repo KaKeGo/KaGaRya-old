@@ -12,7 +12,6 @@ export const Logout = createAsyncThunk(
             const response = await axios.post(
                 `${KAGARYA_API}accounts/profile/logout/`,
                 {},
-
             )
             return response.data
         } catch (error) {
