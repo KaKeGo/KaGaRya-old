@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <div>
-      <h3>Home</h3>
+      <h3>This site is under construction, not much you can find at the moment.</h3>
       {isAuthenticated ? (
         <p>Welcome, {userData?.username || 'Anonymous'}!</p>
       ) : (
