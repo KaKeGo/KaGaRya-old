@@ -16,7 +16,8 @@ export const Login = createAsyncThunk(
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrftoken
-            }
+            },
+            withCredentials: true,
         }
 
         try {
