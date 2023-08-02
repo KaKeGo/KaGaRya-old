@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-    background-color: whitesmoke;
+    background-size: cover;
+    background-repeat: no-repeat;
     justify-content: center;
     align-items: center;
     height: 100vh;
