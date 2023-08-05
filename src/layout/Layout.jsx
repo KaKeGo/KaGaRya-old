@@ -2,6 +2,7 @@ import React from 'react'
 
 import Navbar from '../containers/Navbar/Navbar'
 import Auth from '../content/Account/Auth/Auth'
+import Footer from '../containers/Footer/Footer'
 
 
 const Layout = ({ children }) => {
@@ -10,6 +11,7 @@ const Layout = ({ children }) => {
         <Auth />
           <Navbar />
           {children}
+          <Footer />
     </div>
   )
 }

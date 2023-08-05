@@ -2,5 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
+    margin-bottom: 800px;
+}
+.earth__icon {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 44px;
+}

@@ -1,0 +1,30 @@
+.home__container {
+    display: flex;
+    padding: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.home__column1 {
+    width: 35%;
+}
+.home__column2 {
+    width: 60%;
+}
+.sub__home__column1 {
+    margin: 5px;
+}
+.sub__home__column2 {
+    margin: 5px;
+    min-height: 20px;
+}
+
+@media (max-width: 768px) {
+    .home__container {
+      justify-content: center; /* Wyśrodkuj zawartość */
+    }
+  
+    .home__column1,
+    .home__column2 {
+      width: 100%; /* Pełna szerokość dla obu kolumn */
+    }
+  }

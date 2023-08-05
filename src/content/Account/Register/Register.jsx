@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { Register } from '../../../slices/Accounts/registerSlice'
 
 import './Register.css'
 import CSRFToken from '../../../CSRFToken'
+import FadeInAnimation from '../../../Animations/FadeIn/FadeInAnimation'
 
 const  defaultInvitedCode = 'beton'
 
@@ -18,6 +20,7 @@ const RegisterView = () => {
   const [inviteCodeInput, setInviteCodeInput] = useState(false);
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -33,12 +36,14 @@ const RegisterView = () => {
       dispatch(Register({ 
         username, email, password, confirm_password: confirmPassword
       }))
+      navigate('/login');
     } else {
       setInviteCodeInput(false)
     }
   }
 
   return (
+    <FadeInAnimation>
     <div className='register-container'>
       <div className='register-title'>
         <h1>Register</h1>
@@ -104,6 +109,7 @@ const RegisterView = () => {
         <button className='register-button' type='submit'>Register</button>
       </form>
     </div>
+    </FadeInAnimation>
   )
 }
 
