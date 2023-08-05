@@ -9,7 +9,7 @@ import {
     faCaretDown, faRightToBracket, faUserPlus, faUser, faRightFromBracket
  } from '@fortawesome/free-solid-svg-icons'
 
- import LogoutView from '../../content/Account/Logout/Logout'
+import LogoutView from '../../content/Account/Logout/Logout'
 
 
 const Navbar = () => {
@@ -25,6 +25,7 @@ const Navbar = () => {
         <nav className='navbar'>
 
             <div className='column column-1'>
+            
                 {isAuthenticated ? (
                     <Link to={`/profile/${slug}`}><FontAwesomeIcon icon={faUser} /> Profile</Link>
                 ) : (
@@ -46,15 +47,15 @@ const Navbar = () => {
             </div>
 
             <div className='more-options'>
-                <button onClick={handleToggleExpansion}>
+                {/* <button onClick={handleToggleExpansion}>
                     More content  
                     <FontAwesomeIcon
                             className='down-button'
                             icon={faCaretDown} 
                             rotation={isExpanded ? 180: 0}
                         />
-                </button>
-                {isExpanded && (
+                </button> */}
+                {/* {isExpanded && (
                 <div className='additional-links'>
                     {isAuthenticated ? (
                         <Link to='/todo/plan/list'>Todo plan list</Link>
@@ -62,9 +63,9 @@ const Navbar = () => {
                         <span className='text-xs font-normal'>login to see more...</span>
                     )}
                 </div>
-                )}
+                )} */}
             </div>
-
+           
         </nav>
     )
 }

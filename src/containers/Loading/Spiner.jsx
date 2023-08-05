@@ -1,4 +1,6 @@
-import DotLoader from 'react-spinners/DotLoader'
+import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
+
+import { faEarthEurope } from '@fortawesome/free-solid-svg-icons';
 
 import './Spiner.css'
 
@@ -6,14 +8,12 @@ export const Spiner = () => {
 
 
     return (
-    <div className="spiner">    
-        <DotLoader
-        color="#4fb350"
-        cssOverride={{}}
-        loading
-        size={40}
-        speedMultiplier={1}
-        />
+      <div className="spiner">
+        <FontAwesomeIcon 
+          icon={faEarthEurope} 
+          spin  
+          className='earth__icon'
+        />    
       </div>
     )   
 }

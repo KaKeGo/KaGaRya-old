@@ -1,14 +1,17 @@
-
 .navbar {
+    position: relative;
     margin: 30px auto;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
+    border: solid 2px rgb(65, 99, 241, 0.8);
     border-radius: 40px;
-    background-color: #525151;
+    /* background-color: rgba(138, 43, 226, 0.3); */
+    background-color: rgba(255, 255, 255, 0.3);
+    /* background-color: rgba(255, 182, 193, 0.3); */
     position: relative;
     color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 30px rgb(65, 99, 241);
     width: calc(86% - 140px);
 }
 

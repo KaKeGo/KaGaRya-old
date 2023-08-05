@@ -3,10 +3,13 @@
 @tailwind utilities;
 
 body {
-    background-size: cover;
-    background-repeat: no-repeat;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    background-image: url('https://files.fm/thumb_show.php?i=fhpaz5s47');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }

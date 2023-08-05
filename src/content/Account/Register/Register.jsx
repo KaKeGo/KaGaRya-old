@@ -5,6 +5,7 @@ import { Register } from '../../../slices/Accounts/registerSlice'
 
 import './Register.css'
 import CSRFToken from '../../../CSRFToken'
+import FadeInAnimation from '../../../Animations/FadeIn/FadeInAnimation'
 
 const  defaultInvitedCode = 'beton'
 
@@ -39,6 +40,7 @@ const RegisterView = () => {
   }
 
   return (
+    <FadeInAnimation>
     <div className='register-container'>
       <div className='register-title'>
         <h1>Register</h1>
@@ -104,6 +106,7 @@ const RegisterView = () => {
         <button className='register-button' type='submit'>Register</button>
       </form>
     </div>
+    </FadeInAnimation>
   )
 }
 
