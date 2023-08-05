@@ -8,7 +8,7 @@ import { Login } from '../../../slices/Accounts/loginSlice'
 import { Spiner } from '../../../containers/Loading/Spiner'
 import './Login.css'
 import { fetchUserAuthCheck } from '../../../slices/Accounts/authCheckSlice'
-
+import FadeInAnimation from '../../../Animations/FadeIn/FadeInAnimation'
 
 const LoginView = () => {
   const [email, setEmail] = useState('')
@@ -52,6 +52,7 @@ const LoginView = () => {
   }
 
   return (
+    <FadeInAnimation>
       <div className='login-container'>
 
         <div>
@@ -77,6 +78,7 @@ const LoginView = () => {
         </div>
 
       </div>
+      </FadeInAnimation>
     )
 }
 

@@ -1,14 +1,19 @@
-
 .navbar {
+    position: relative;
     margin: 30px auto;
-    margin-bottom: 80px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
+    border: solid 2px rgb(65, 99, 241, 0.8);
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 0px 30px rgb(65, 99, 241);
     border-radius: 40px;
-    background-color: #525151;
+    /* background-color: rgba(138, 43, 226, 0.3); */
+    /* background-color: rgba(255, 255, 255, 0.6); */
+    /* background-color: rgba(255, 182, 193, 0.5); */
     position: relative;
-    color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: black;
+    
     width: calc(86% - 140px);
 }
 
@@ -67,6 +72,11 @@
 .column-2 a {
     flex-basis: 20%;
     -webkit-text-stroke: 1px black;
+}
+.column-2 img {
+    margin: auto;
+    min-height: 60px;
+    min-width: 250px;
 }
 .column-3 {
     flex-basis: 40%;
