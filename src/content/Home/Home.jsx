@@ -13,15 +13,6 @@ const Home = () => {
   const userData = useSelector((state) => state.authCheck.userData)
 
   return (
-<<<<<<< HEAD
-    <div>
-      <h3>This site is under construction, not much you can find at the moment.</h3>
-      {isAuthenticated ? (
-        <p>Welcome, {userData?.username || 'Anonymous'}!</p>
-      ) : (
-        <p>Welcome, Anonymous!</p>
-      )}
-=======
     <FadeInAnimation>
     <div className='home__container'>
       
@@ -49,7 +40,6 @@ const Home = () => {
         </div>
       </div>
 
->>>>>>> core
     </div>
     </FadeInAnimation>
   );
