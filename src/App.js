@@ -9,6 +9,7 @@ import Register from "./content/Account/Register/Register";
 import TodoPlanList from "./content/Todo/TodoPlanList";
 import TodoPlanDetail from "./content/Todo/TodoPlanDetail";
 import UserProfileView from "./content/Account/UserProfile/UserProfile";
+import Notification from "./containers/Notification/Notification";
 
 
 function App() {

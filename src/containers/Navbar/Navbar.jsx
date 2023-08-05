@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import './Navbar.css'
+import logo from '../../Assets/Logo/KaGaRya.png'
 
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 import { 
@@ -35,7 +36,9 @@ const Navbar = () => {
             </div>
 
             <div className='column column-2'>
-                <Link className='pageName' to='/'><h1>KaGaRya</h1></Link>
+                <Link className='pageName' to='/'>
+                    <img src={logo}/>
+                </Link>
             </div>
 
             <div className='column column-3'>

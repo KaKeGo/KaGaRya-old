@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { Register } from '../../../slices/Accounts/registerSlice'
 
@@ -19,6 +20,7 @@ const RegisterView = () => {
   const [inviteCodeInput, setInviteCodeInput] = useState(false);
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -34,6 +36,7 @@ const RegisterView = () => {
       dispatch(Register({ 
         username, email, password, confirm_password: confirmPassword
       }))
+      navigate('/login');
     } else {
       setInviteCodeInput(false)
     }

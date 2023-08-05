@@ -5,6 +5,8 @@ import { useParams }from 'react-router-dom'
 import { fetchUserProfile } from '../../../slices/Accounts/Profile/profileDetailSlice'
 
 import { Spiner } from '../../../containers/Loading/Spiner'
+import FadeInAnimation from '../../../Animations/FadeIn/FadeInAnimation'
+import CustomButton from '../../../containers/Button/CustomButton' 
 
 import './UserProfile.css'
 
@@ -32,14 +34,15 @@ const UserProfileView = () => {
     }
 
     return (
+    <FadeInAnimation>
     <div className='container'>
 
         <div className='title'>
 
-            <h2>User info</h2>
+            <h2 className='text'>User info</h2>
             <div className='divider'></div>
             <div className='tab-button'>
-                Kuchnia
+                Comming soon
             </div>
 
         </div>
@@ -87,42 +90,54 @@ const UserProfileView = () => {
                         <div className='profile__list-title profile__label'>Anime</div>
                         <div className='profile__divider2'></div>
                         <div className='profile__create-list'>
-                            <button className='profile__create-list-button'>Start own list</button>
+                            <CustomButton 
+                                value={'Create'}
+                            />
                         </div>
                     </div>
                     <div className='profile__list-column'>
                         <div className='profile__list-title profile__label'>Manga</div>
                         <div className='profile__divider2'></div>
                         <div className='profile__create-list'>
-                            <button className='profile__create-list-button'>Start own list</button>
+                            <CustomButton 
+                                value={'Create'}
+                            />
                         </div>
                     </div>
                     <div className='profile__list-column'>
                         <div className='profile__list-title profile__label'>Books</div>
                         <div className='profile__divider2'></div>
                         <div className='profile__create-list'>
-                            <button className='profile__create-list-button'>Start own list</button>
+                            <CustomButton 
+                                value={'Create'}
+                            />
                         </div>
                     </div>
                     <div className='profile__list-column'>
                         <div className='profile__list-title profile__label'>Films</div>
                         <div className='profile__divider2'></div>
                         <div className='profile__create-list'>
-                            <button className='profile__create-list-button'>Start own list</button>
+                            <CustomButton 
+                                value={'Create'}
+                            />
                         </div>
                     </div>
                     <div className='profile__list-column'>
                         <div className='profile__list-title profile__label'>Series</div>
                         <div className='profile__divider2'></div>
                         <div className='profile__create-list'>
-                            <button className='profile__create-list-button'>Start own list</button>
+                            <CustomButton 
+                                value={'Create'}
+                            />
                         </div>
                     </div>
                     <div className='profile__list-column'>
                         <div className='profile__list-title profile__label'>Games</div>
                         <div className='profile__divider2'></div>
                         <div className='profile__create-list'>
-                            <button className='profile__create-list-button'>Start own list</button>
+                            <CustomButton 
+                                value={'Create'}
+                            />
                         </div>
                     </div>
                 </div>
@@ -144,6 +159,7 @@ const UserProfileView = () => {
         </div>
 
     </div>
+    </FadeInAnimation>
         
     )
 }

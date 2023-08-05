@@ -9,7 +9,8 @@
     padding: 10px;
     margin-left: 40px;
     font-weight: 800;
-    font-size: 22px;
+    font-size: 26px;
+    color: whitesmoke;
 }
 .divider {
     width: 2px;
@@ -22,17 +23,20 @@
     margin-left: 30px;
     font-size: 18px;
     font-weight: 700;
-    background-color: white;
     box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
     cursor: pointer;
+    -webkit-text-stroke: 1px black;
 }
 .tab-button:hover {
     animation: changesColorAndCursor 0.4s ease forwards;
 }
 .profile__container {
+    border-radius: 20px;
     border: 1px solid #ccc;
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 0px 40px rgb(65, 99, 241);
 }
 
 .profile__row {
@@ -55,6 +59,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    color: black;
 }
 .profile__column-3 {
     padding: 5px;
@@ -62,7 +67,7 @@
 }
 .profile__label  {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
 }
 .profile__divider {
     width: 100%;
@@ -90,7 +95,7 @@
 .profile__value-about {
     margin-top: 10px;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
 }
 .profile__list-conteiner {
@@ -104,7 +109,7 @@
     padding: 10px;
     margin: 5px;
     text-align: center;
-    background-color: #f5f5f5;
+    background-color: rgba(138, 43, 226, 0.3);
 }
 .profile__list-title {
     padding: 5px;
